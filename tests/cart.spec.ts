@@ -2,10 +2,14 @@ import { test, expect } from '../utils/fixtures';
 import { LoginPage } from '../pages/LoginPage';
 import { ProductPage } from '../pages/ProductPage';
 import { CartPage } from '../pages/CartPage';
+import { handleConsentPopup } from '../utils/helpers';
+import { maximizeWindow } from '../utils/helpers';
 
 test.describe('Cart Module', () => {
 
-  test('Add Product to Cart and Remove', async ({ page }) => {
+  test('Add Product to Cart and Remove@smoke @regression', async ({ page }) => {
+      await maximizeWindow(page);
+      await handleConsentPopup(page);
     const loginPage = new LoginPage(page);
     const productPage = new ProductPage(page);
     const cartPage = new CartPage(page);

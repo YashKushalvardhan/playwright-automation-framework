@@ -5,7 +5,7 @@ import { maximizeWindow } from '../utils/helpers';
 
 test.describe('Login Module', () => {
 
-  test('Negative Login - Wrong Password', async ({ page }) => {
+  test('Negative Login - Wrong Password, @regression', async ({ page }) => {
       await maximizeWindow(page);
       await handleConsentPopup(page);
     
@@ -17,7 +17,7 @@ test.describe('Login Module', () => {
     await loginPage.verifyLoginError();
   });
 
-  test('Successful Login - Existing User', async ({ page }) => {
+  test('Successful Login - Existing User @smoke @regression', async ({ page }) => {
     const loginPage = new LoginPage(page);
       await maximizeWindow(page);
       await handleConsentPopup(page);

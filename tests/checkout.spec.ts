@@ -3,10 +3,15 @@ import { LoginPage } from '../pages/LoginPage';
 import { ProductPage } from '../pages/ProductPage';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
+import { handleConsentPopup } from '../utils/helpers';
+import { maximizeWindow } from '../utils/helpers';
+
 
 test.describe('Checkout Module', () => {
 
-  test('End-to-End: Add to Cart → Checkout', async ({ page }) => {
+  test('End-to-End: Add to Cart → Checkout @smoke @regression', async ({ page }) => {
+      await maximizeWindow(page);
+      await handleConsentPopup(page);
     const loginPage = new LoginPage(page);
     const productPage = new ProductPage(page);
     const cartPage = new CartPage(page);
