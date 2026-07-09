@@ -1,0 +1,30 @@
+{
+  "name": "playwright-automation-framework",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YashKushalvardhan/playwright-automation-framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YashKushalvardhan/playwright-automation-framework/issues"
+  },
+  "homepage": "https://github.com/YashKushalvardhan/playwright-automation-framework#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.5.0",
+    "dotenv": "^17.4.2",
+    "faker": "^6.6.6"
+  }
+}
