@@ -1,15 +1,16 @@
-import { test as base } from '@playwright/test';
+// utils/fixtures.ts
+import { test as base, expect } from '@playwright/test';
 import { handleConsentPopup } from '../utils/helpers';
 
 export const test = base.extend({
   page: async ({ page }, use) => {
-    await use(page);
-    
-    // Pop-up handle after every page
-    await handleConsentPopup(page);
+    // Har page load/navigation ke baad consent popup auto-handle
+    page.on('load', async () => {
+      await handleConsentPopup(page);
+    });
 
+    await use(page);
   },
 });
 
-export { expect } from '@playwright/test';
-
+export { expect };
