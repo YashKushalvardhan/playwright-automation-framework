@@ -7,6 +7,8 @@
   },
   "scripts": {
     "test": "npx playwright test",
+    "test:dev": "cross-env ENV=dev npx playwright test",
+    "test:stage": "cross-env ENV=stage npx playwright test",
     "test:smoke": "npx playwright test --grep @smoke",
     "test:regression": "npx playwright test --grep @regression",
     "test:headed": "npx playwright test --headed",
@@ -25,8 +27,10 @@
   "homepage": "https://github.com/YashKushalvardhan/playwright-automation-framework#readme",
   "description": "",
   "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
     "@playwright/test": "^1.61.1",
-    "@types/node": "^26.1.0"
+    "@types/node": "^26.1.0",
+    "cross-env": "^10.1.0"
   },
   "dependencies": {
     "@faker-js/faker": "^10.5.0",

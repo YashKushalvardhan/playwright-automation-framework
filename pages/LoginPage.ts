@@ -17,8 +17,8 @@ export class LoginPage extends BasePage {
   }
 
   async verifySuccessfulLogin() {
-    await expect(this.logoutLink).toBeVisible();
-    await expect(this.page.getByText('Logged in as')).toBeVisible();
+    await expect.soft(this.logoutLink).toBeVisible();
+    await expect.soft(this.page.getByText('Logged in as')).toBeVisible();
   }
 
   async verifyLoginError() {
