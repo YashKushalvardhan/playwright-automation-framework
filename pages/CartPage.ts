@@ -7,7 +7,7 @@ export class CartPage extends BasePage {
   }
 
   async removeFirstProduct() {
-    await this.page.locator("//td[@class='cart_delete']//a[@class='cart_quantity_delete']").first().click();
+    await this.page.locator("//td[@class='cart_delete']//a[@class='cart_quantity_delete']//i[@class='fa fa-times']").first().click();
   }
 
   async verifyCartEmpty() {
