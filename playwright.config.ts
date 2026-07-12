@@ -21,8 +21,9 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
-  projects: [
-    { name: 'Google Chrome', use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
-    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
-  ],
+projects: [
+  { name: 'Google Chrome', use: { ...devices['Desktop Chrome'], channel: 'chrome' } },  // Local only
+  { name: 'chromium', use: { ...devices['Desktop Chrome'] } },                            //For Docker/CI
+  { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
+],
 });
