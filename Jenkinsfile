@@ -17,9 +17,15 @@ pipeline {
         }
 
         stage('Run Tests') {
+            environment {
+                BASE_URL = 'https://automationexercise.com/'
+                TEST_USER_EMAIL = 'cigek50755@doefy.com'
+                TEST_USER_PASSWORD = 'Test@1234'
+                ENV_NAME = 'dev'
+            }
             steps {
                 script {
-                    docker.image('pw-tests').inside('--env-file .env.dev') {
+                    docker.image('pw-tests').inside {
                         sh 'npx playwright test --project=chromium --project=firefox || true'
                     }
                 }
