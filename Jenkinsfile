@@ -17,18 +17,19 @@ pipeline {
         }
 
         stage('Run Tests') {
-            environment {
-                BASE_URL = 'https://automationexercise.com/'
-                TEST_USER_EMAIL = 'cigek50755@doefy.com'
-                TEST_USER_PASSWORD = 'Test@1234'
-                ENV_NAME = 'dev'
-            }
             steps {
-                script {
-                    docker.image('pw-tests').inside {
-                        sh 'npx playwright test --project=chromium --project=firefox || true'
-                    }
-                }
+                sh '''
+                    CID=$(docker create \
+                      -e BASE_URL=https://automationexercise.com/ \
+                      -e TEST_USER_EMAIL=cigek50755@doefy.com \
+                      -e TEST_USER_PASSWORD=Test@1234 \
+                      -e ENV_NAME=dev \
+                      pw-tests npx playwright test --project=chromium --project=firefox)
+                    docker start -a $CID || true
+                    docker cp $CID:/app/playwright-report ./playwright-report || true
+                    docker cp $CID:/app/test-results ./test-results || true
+                    docker rm -f $CID || true
+                '''
             }
         }
 
