@@ -7,20 +7,22 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Lint') {
-            steps {
-                sh '''
-                    npm ci
-                    npm run lint || true
-                '''
-    }
-}
 
         stage('Build Docker Image') {
             steps {
                 script {
                     docker.build('pw-tests', '-f docker/Dockerfile .')
                 }
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                sh '''
+                    CID=$(docker create pw-tests npm run lint)
+                    docker start -a $CID || true
+                    docker rm -f $CID || true
+                '''
             }
         }
 

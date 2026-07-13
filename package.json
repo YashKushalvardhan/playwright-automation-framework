@@ -13,7 +13,7 @@
     "test:regression": "npx playwright test --grep @regression",
     "test:headed": "npx playwright test --headed",
     "report": "npx playwright show-report",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
