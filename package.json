@@ -12,7 +12,8 @@
     "test:smoke": "npx playwright test --grep @smoke",
     "test:regression": "npx playwright test --grep @regression",
     "test:headed": "npx playwright test --headed",
-    "report": "npx playwright show-report"
+    "report": "npx playwright show-report",
+    "lint": "eslint . --ext .ts"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,10 @@
     "@axe-core/playwright": "^4.12.1",
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.1.0",
-    "cross-env": "^10.1.0"
+    "@typescript-eslint/eslint-plugin": "^8.64.0",
+    "@typescript-eslint/parser": "^8.64.0",
+    "cross-env": "^10.1.0",
+    "eslint": "^10.7.0"
   },
   "dependencies": {
     "@faker-js/faker": "^10.5.0",

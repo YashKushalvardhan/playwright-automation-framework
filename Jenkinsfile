@@ -7,6 +7,14 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Lint') {
+            steps {
+                sh '''
+                    npm ci
+                    npm run lint || true
+                '''
+    }
+}
 
         stage('Build Docker Image') {
             steps {
@@ -18,18 +26,24 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh '''
-                    CID=$(docker create \
-                      -e BASE_URL=https://automationexercise.com/ \
-                      -e TEST_USER_EMAIL=cigek50755@doefy.com \
-                      -e TEST_USER_PASSWORD=Test@1234 \
-                      -e ENV_NAME=dev \
-                      pw-tests npx playwright test --project=chromium --project=firefox)
-                    docker start -a $CID || true
-                    docker cp $CID:/app/playwright-report ./playwright-report || true
-                    docker cp $CID:/app/test-results ./test-results || true
-                    docker rm -f $CID || true
-                '''
+                withCredentials([
+                    string(credentialsId: 'test-base-url', variable: 'BASE_URL'),
+                    string(credentialsId: 'test-user-email', variable: 'TEST_USER_EMAIL'),
+                    string(credentialsId: 'test-user-password', variable: 'TEST_USER_PASSWORD')
+                ]) {
+                    sh '''
+                        CID=$(docker create \
+                          -e BASE_URL=$BASE_URL \
+                          -e TEST_USER_EMAIL=$TEST_USER_EMAIL \
+                          -e TEST_USER_PASSWORD=$TEST_USER_PASSWORD \
+                          -e ENV_NAME=dev \
+                          pw-tests npx playwright test --project=chromium --project=firefox)
+                        docker start -a $CID || true
+                        docker cp $CID:/app/playwright-report ./playwright-report || true
+                        docker cp $CID:/app/test-results ./test-results || true
+                        docker rm -f $CID || true
+                    '''
+                }
             }
         }
 
