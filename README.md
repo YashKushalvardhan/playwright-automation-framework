@@ -9,6 +9,11 @@
 ![Jenkins Pipeline Success](docs/screenshots/jenkins-pipeline-success.png)
 
 # Playwright Automation Framework
+## About
+
+This is a portfolio project demonstrating production-grade test automation practices — built to showcase 3+ years equivalent QA engineering skills for automation roles. It covers the full testing lifecycle: page object design, data-driven and API-hybrid testing, accessibility compliance (WCAG 2 AA), containerization with Docker, and a self-hosted Jenkins CI/CD pipeline with secure credential management and auto-triggered builds.
+
+**Target site:** [automationexercise.com](https://automationexercise.com) — a public e-commerce practice site.
 
 A production-style end-to-end test automation framework built with **Playwright + TypeScript**, targeting [automationexercise.com](https://automationexercise.com). Demonstrates Page Object Model design, data-driven testing, API+UI hybrid flows, accessibility scanning, containerization, and a fully automated Jenkins CI/CD pipeline.
 
@@ -24,6 +29,7 @@ flowchart TD
     F --> G[4. Run Tests<br/>Playwright in container<br/>secrets from Jenkins Credentials]
     G --> H[5. Publish HTML Report<br/>Jenkins UI]
 ```
+
 ## Tech Stack
 
 | Layer | Tools |
