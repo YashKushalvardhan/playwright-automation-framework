@@ -9,7 +9,7 @@ console.log(`🌍 Running on ENV: ${process.env.ENV_NAME} | Base URL: ${process.
 
 export default defineConfig({
   testDir: './tests',
-  timeout: 30 * 1000,
+  timeout: process.env.CI ? 60 * 1000 : 30 * 1000,
   expect: { timeout: 5000 },
   fullyParallel: true, // Parallel tests
   retries: 2,         // For Flaky tests 
