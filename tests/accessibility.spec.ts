@@ -12,7 +12,7 @@ test('Homepage accessibility scan @regression', async ({ page }, testInfo) => {
   const critical = results.violations.filter(v => v.impact === 'critical');
   const serious = results.violations.filter(v => v.impact === 'serious');
 
-  // Report ke andar poora scan attach karo — audit trail ke liye
+  // attach scan in report —  for audit trail 
   await testInfo.attach('accessibility-report', {
     body: JSON.stringify(results.violations, null, 2),
     contentType: 'application/json',
@@ -20,6 +20,6 @@ test('Homepage accessibility scan @regression', async ({ page }, testInfo) => {
 
   console.log(`Violations — Critical: ${critical.length}, Serious: ${serious.length}, Total: ${results.violations.length}`);
 
-  // Test PASS rahega, but findings HTML report mein documented milenge
+  // Test will pass, however findings will be in html
   expect(results.violations.length).toBeGreaterThanOrEqual(0);
 });
