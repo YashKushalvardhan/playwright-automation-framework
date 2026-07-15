@@ -14,25 +14,16 @@ A production-style end-to-end test automation framework built with **Playwright 
 
 ## Architecture
 
-┌─────────────┐     git push     ┌─────────────┐    poll (5 min)   ┌──────────────────┐
-│   Your PC   │ ───────────────> │   GitHub    │ <──────────────── │      Jenkins      │
-│  (VS Code)  │                  │    Repo     │                   │ (Docker container) │
-└─────────────┘                  └─────────────┘                   └─────────┬─────────┘
-│
-┌─────────────────────────┼─────────────────────────┐
-│                         │                          │
-1. Checkout               2. Lint (ESLint)          3. Build Docker
-(pw-tests image)
-│
-▼
-4. Run Tests (Playwright
-in container, secrets
-from Jenkins Credentials)
-│
-▼
-5. Publish HTML Report
-(Jenkins UI)
-
+```mermaid
+flowchart TD
+    A[Your PC<br/>VS Code] -->|git push| B[GitHub Repo]
+    B -->|poll every 5 min| C[Jenkins<br/>Docker container]
+    C --> D[1. Checkout]
+    D --> E[2. Lint - ESLint]
+    E --> F[3. Build Docker Image<br/>pw-tests]
+    F --> G[4. Run Tests<br/>Playwright in container<br/>secrets from Jenkins Credentials]
+    G --> H[5. Publish HTML Report<br/>Jenkins UI]
+```
 ## Tech Stack
 
 | Layer | Tools |
