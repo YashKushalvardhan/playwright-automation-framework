@@ -3,6 +3,11 @@
 ![Docker](https://img.shields.io/badge/Docker-containerized-2496ED?logo=docker&logoColor=white)
 ![Jenkins](https://img.shields.io/badge/CI%2FCD-Jenkins-D24939?logo=jenkins&logoColor=white)
 ![Accessibility](https://img.shields.io/badge/Accessibility-WCAG%202%20AA-informational)
+## About
+
+This is a portfolio project demonstrating production-grade test automation practices — built to showcase 3+ years equivalent QA engineering skills for automation roles. It covers the full testing lifecycle: page object design, data-driven and API-hybrid testing, accessibility compliance (WCAG 2 AA), containerization with Docker, and a self-hosted Jenkins CI/CD pipeline with secure credential management and auto-triggered builds.
+
+**Target site:** [automationexercise.com](https://automationexercise.com) — a public e-commerce practice site.
 
 ## Pipeline in Action
 
