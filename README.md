@@ -24,6 +24,7 @@ flowchart TD
     F --> G[4. Run Tests<br/>Playwright in container<br/>secrets from Jenkins Credentials]
     G --> H[5. Publish HTML Report<br/>Jenkins UI]
 ```
+
 ## Tech Stack
 
 | Layer | Tools |
