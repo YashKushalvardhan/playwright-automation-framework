@@ -102,6 +102,12 @@ npm run test:stage
 | automationexercise.com serves real third-party ads that intercept clicks, especially under Docker's limited resources | Documented as a known third-party flakiness pattern rather than a framework bug; not "fixed" since it's outside our control |
 | ESLint v9+ deprecated `.eslintrc.json` | Migrated to flat config (`eslint.config.js`) |
 | Windows Docker Desktop's socket group ownership (`root`, not a dedicated `docker` group) blocks the standard `docker` group fix | Uses `chmod 666` on the socket as a pragmatic local-dev workaround; documented the production-correct alternative (native Linux `docker` group membership) |
+| Firefox shows higher flakiness than Chromium in the Dockerized CI environment — third-party ad iframes on the demo site intercept clicks, and Firefox's rendering under resource-constrained containers recovers slower than Chromium | Primary verification and manual validation done on Chromium/Google Chrome; Firefox is included in the CI matrix for cross-browser coverage but treated as best-effort — failures there are triaged separately and are not blocking |
+
+## Known Limitations
+
+- **Cross-browser stability**: Chromium/Chrome is the primary, fully-verified target browser. Firefox is included in the CI matrix for broader coverage but currently shows intermittent flakiness under Docker's resource constraints combined with the demo site's live ad content — documented, not yet root-caused to a fixable degree since ads are outside our control.
+- **Shared test account**: Login/cart tests currently share a single test account (`cigek50755@doefy.com`). A failed test mid-run can leave residual cart state affecting subsequent runs. A future improvement would be per-test dynamic accounts (as already demonstrated in the API+UI hybrid test) or an explicit cart-reset step in `beforeEach`.
 
 ## Accessibility Findings
 
