@@ -42,7 +42,7 @@ export async function handleConsentPopup(page: Page) {
   }
 }
 
-// utils/helpers.ts mein add karo
+
 export async function maximizeWindow(page: Page) {
   await page.setViewportSize({ width: 1920, height: 1080 });
   

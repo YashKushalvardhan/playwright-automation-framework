@@ -4,7 +4,7 @@ import { handleConsentPopup } from '../utils/helpers';
 
 export const test = base.extend({
   page: async ({ page }, use) => {
-    // Har page load/navigation ke baad consent popup auto-handle
+    // On every page after load/navigation consent popup auto-handle
     page.on('load', async () => {
       await handleConsentPopup(page);
     });

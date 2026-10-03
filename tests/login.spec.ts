@@ -1,14 +1,12 @@
 import { test, expect } from '../utils/fixtures';
 import { LoginPage } from '../pages/LoginPage';
 import { generateInvalidCredentials } from '../utils/testData';
-import { handleConsentPopup } from '../utils/helpers';
 import { maximizeWindow } from '../utils/helpers';
 
 test.describe('Login Module', () => {
 
   test('Successful Login - Existing User @smoke @regression', async ({ page }) => {
     await maximizeWindow(page);
-    // await handleConsentPopup(page);
     const loginPage = new LoginPage(page);
     await loginPage.goto('/login');
 

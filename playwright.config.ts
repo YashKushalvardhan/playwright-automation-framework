@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
 
-// CLI se env batana hoga: ENV=dev ya ENV=stage
+// Specifying env from CLI ENV=dev? or ENV=stage?
 const environment = process.env.ENV || 'dev';
 dotenv.config({ path: path.resolve(__dirname, `.env.${environment}`) });
 console.log(`🌍 Running on ENV: ${process.env.ENV_NAME} | Base URL: ${process.env.BASE_URL}`);
