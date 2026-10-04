@@ -8,7 +8,7 @@ test.describe('API + UI Hybrid', () => {
   test('Create user via API, then login via UI @regression', async ({ page, request }) => {
     const newUser = generateNewUser();
 
-    // Step 1: Create account via api
+    // Step 1: Create account via api (Form is used instead of data because 'application/x-www-form-urlencoded' expect form not json)
     const createResponse = await request.post('https://automationexercise.com/api/createAccount', {
       form: newUser,
     });
